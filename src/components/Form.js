@@ -1,29 +1,37 @@
 import React from 'react';
 
 class Form extends React.Component {
-  state = {
-    firstName: "John",
-    lastName: "Henry"
-  }
+  // handleSubmit = event => {
+  //   event.preventDefault()
+  //   const state = this.state
+  //   const formData = {
+  //     firstName: state.firstName,
+  //     lastName: state.lastName,
+  //   }
+  //   const dataArray = this.state.submittedData.concat(formData)
+  //   this.setState({submittedData: dataArray})
+  // }
 
-  handleFirstNameChange = event => {
-    this.setState({
-      firstName: event.target.value
-    })
-  }
-
-  handleLastNameChange = event => {
-    this.setState({
-      lastName: event.target.value
-    })
-  }
+  // listOfSubmissions = () => {
+  //   const state = this.state
+  //   const submittedData = state.submittedData
+  //   return submittedData.map(data => {
+  //     return <div><span>{data.firstName}</span> <span>{data.lastName}</span></div>
+  //   })
+  // }
 
   render() {
+    const props = this.props
+    const formData = props.formData
     return (
-      <form>
-        <input type="text" name="firstName" onChange={event => this.handleFirstNameChange(event)} value={this.state.firstName} />
-        <input type="text" name="lastName" onChange={event => this.handleLastNameChange(event)} value={this.state.lastName} />
-      </form>
+      <div>
+        <form>
+          <input type="text" name="firstName" onChange={props.handleChange} value={formData.firstName} />
+          <input type="text" name="lastName" onChange={props.handleChange} value={formData.lastName} />
+          <input type="submit" />
+        </form>
+        {/* {this.listOfSubmissions()} */}
+      </div>
     )
   }
 }
